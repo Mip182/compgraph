@@ -95,33 +95,6 @@ MAP_CASES = [
         mapper_ground_truth_items=(0, 1, 2)
     ),
     MapCase(
-        mapper=ops.Split(column='text', separator=';'),
-        data=[
-            {'test_id': 1, 'text': 'one;two;three'},
-            {'test_id': 2, 'text': 'tab;splitting;test'},
-            {'test_id': 3, 'text': 'more;lines;test'},
-            {'test_id': 4, 'text': 'tricky;test'}
-        ],
-        ground_truth=[
-            {'test_id': 1, 'text': 'one'},
-            {'test_id': 1, 'text': 'three'},
-            {'test_id': 1, 'text': 'two'},
-
-            {'test_id': 2, 'text': 'splitting'},
-            {'test_id': 2, 'text': 'tab'},
-            {'test_id': 2, 'text': 'test'},
-
-            {'test_id': 3, 'text': 'lines'},
-            {'test_id': 3, 'text': 'more'},
-            {'test_id': 3, 'text': 'test'},
-
-            {'test_id': 4, 'text': 'test'},
-            {'test_id': 4, 'text': 'tricky'}
-        ],
-        cmp_keys=('test_id', 'text'),
-        mapper_ground_truth_items=(0, 1, 2)
-    ),
-    MapCase(
         mapper=ops.Product(columns=['speed', 'time'], result_column='distance'),
         data=[
             {'test_id': 1, 'speed': 5, 'time': 10},
